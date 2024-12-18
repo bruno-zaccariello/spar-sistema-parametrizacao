@@ -1,0 +1,31 @@
+<form [formGroup]="form">
+  <div class="form-group">
+    <label for="nome">Sigla</label>
+    <input
+      formControlName="nome"
+      id="nome"
+      placeholder="SIS0EXMPL"
+      type="text"
+      class="form-control width-200"
+      maxlength="10"
+    />
+    <small id="descricaoHelp" class="form-text text-muted"
+      >Sigla com até 10 caracteres</small
+    >
+  </div>
+
+  <div class="form-group mb-4">
+    <label for="descricao">Descrição</label>
+    <textarea
+      formControlName="descricao"
+      id="descricao"
+      [placeholder]="PLACEHOLDER_DESCRICAO"
+      class="form-control fixed"
+      rows="3"
+      maxlength="200"
+    ></textarea>
+    <small id="descricaoHelp" class="form-text text-muted"
+      >Máximo de 200 caracteres.</small
+    >
+  </div>
+</form>

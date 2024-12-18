@@ -1,0 +1,56 @@
+.gui-toast-group {
+    position: fixed;
+    z-index: 1;
+    inset-block-end: 0;
+    inset-inline: 0;
+    padding-block-end: 5vh;
+}
+
+.gui-toast-group {
+    display: grid;
+    justify-items: center;
+    justify-content: center;
+    gap: 1vh;
+}
+
+.gui-toast-group {
+    pointer-events: none;
+}
+
+.gui-toast {
+    max-inline-size: min(200ch, 90vw);
+    padding-block: .5ch;
+    padding-inline: 1ch;
+    border-radius: 3px;
+    font-size: 1rem;
+}
+
+.gui-toast {
+    --_bg-lightness: 90%;
+
+    color: black;
+    background: hsl(0 0% var(--_bg-lightness) / 90%);
+}
+
+.gui-toast--success {
+    background: hsla(120, 54%, 34%, 0.9);
+}
+
+.gui-toast--error {
+    background: hsl(0 100% 50% / 90%);
+}
+
+.gui-toast--warning {
+    background: hsl(45 100% 50% / 90%);
+}
+
+.gui-toast--info {
+    background: hsl(210 100% 50% / 90%);
+}
+
+@media (prefers-color-scheme: dark) {
+    .gui-toast {
+        color: white;
+        --_bg-lightness: 20%;
+    }
+}

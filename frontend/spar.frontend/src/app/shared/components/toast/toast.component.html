@@ -1,0 +1,9 @@
+<section class="gui-toast-group">
+  <output
+    *ngFor="let message of messages.values()"
+    @toastAnimation
+    [class]="['gui-toast', 'gui-toast--' + message.type]"
+    role="status"
+    >{{ message.message }}</output
+  >
+</section>

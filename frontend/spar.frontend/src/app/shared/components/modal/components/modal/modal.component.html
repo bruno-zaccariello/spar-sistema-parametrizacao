@@ -1,0 +1,30 @@
+<ng-template #modalTemplate>
+  <div class="modal">
+    <div *ngIf="!!modalHeader" class="spar-modal-header">
+      <ng-content select="modal-header"></ng-content>
+    </div>
+
+    <div *ngIf="!modalHeader && (!!title || options?.title)" class="spar-modal-header">
+      <div class="modal-close">
+        <button (click)="close()" autofocus class="icon-button">
+          <ng-icon name="jamClose"></ng-icon>
+        </button>
+      </div>
+
+      <div class="spar-modal-title">
+        <h2 *ngIf="title || options?.title">{{ options.title ?? title }}</h2>
+      </div>
+    </div>
+
+    <div *ngIf="!bodyTemplate" class="spar-modal-body">
+      <ng-content select="modal-body"></ng-content>
+    </div>
+    <div *ngIf="bodyTemplate">
+      <ng-container *ngTemplateOutlet="bodyTemplate"></ng-container>
+    </div>
+
+    <div class="spar-modal-footer">
+      <ng-content select="modal-footer"></ng-content>
+    </div>
+  </div>
+</ng-template>

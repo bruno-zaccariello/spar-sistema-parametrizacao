@@ -1,0 +1,15 @@
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <h2>SPAR</h2>
+  </div>
+
+  <hr />
+
+  <ul *ngFor="let nav of navigation">
+    <li>
+      <a [routerLink]="[nav.link]" routerLinkActive="router-link-active">
+        <button mat-button>{{ nav.title }}</button>
+      </a>
+    </li>
+  </ul>
+</aside>

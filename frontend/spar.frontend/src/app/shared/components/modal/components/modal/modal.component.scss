@@ -1,0 +1,96 @@
+.modal {
+    isolation: isolate;
+    position: relative;
+    background-color: #ececec;
+    width: 100%;
+    height: 100%;
+
+    // Box shadow bottom-right
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+
+    border-radius: 12px;
+    border: .5ch solid var(--color-darken-primary);
+
+    padding: 1rem;
+    display: grid;
+
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "header"
+        "body"
+        "footer";
+
+}
+
+.spar-modal-header {
+    display: block;
+    position: relative;
+    grid-area: header;
+
+    padding: var(--sm);
+
+    h2 {
+        font-size: 1.4rem;
+    }
+}
+
+.modal-close {
+    position: absolute;
+    inset: 0 0 auto auto;
+}
+
+.icon-button {
+    all: unset;
+    width: 1.5rem;
+    aspect-ratio: 1;
+
+    cursor: pointer;
+    z-index: 1;
+
+    ng-icon {
+        font-size: 1.5rem;
+    }
+
+    &:focus ng-icon {
+        outline: 1px dashed black;
+    }
+
+    ng-icon:hover, ng-icon:focus {
+        animation: modal-animation 600ms ease-in-out;
+
+        @keyframes modal-animation {
+            0% {
+                transform: scale(1);
+            }
+
+            40% {
+                transform: scale(0.8);
+            }
+
+            70% {
+                transform: scale(1.3);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+    }
+
+}
+
+.spar-modal-body {
+    display: block;
+    grid-area: body;
+    padding-bottom: 1rem;
+}
+
+.spar-modal-footer {
+    display: block;
+    grid-area: footer;
+
+    padding-block-start: 1rem;
+
+    border-top: 3px solid var(--color-darken-bg);
+}

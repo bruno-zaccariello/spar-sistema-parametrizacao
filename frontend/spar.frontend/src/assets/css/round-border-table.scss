@@ -1,0 +1,55 @@
+table {
+    --border: 2px solid var(--color-primary);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+
+    border-collapse: separate;
+    background-color: var(--color-bg);
+    border: var(--border);
+    overflow: hidden;
+}
+
+tr:nth-child(odd) {
+    background-color: var(--color-bg);
+}
+
+tr:nth-child(even) {
+    background-color: var(--color-darken-bg);
+}
+
+table th:first-child {
+    width: 20%;
+}
+
+table th:nth-child(2) {
+    width: 50%;
+}
+
+table th {
+    background-color: var(--color-darken-primary);
+}
+
+.actions-column {
+    text-align: end;
+}
+
+/* Apply a border to the right of all but the last column */
+table th:not(:last-child),
+table td:not(:last-child) {
+    border-right: var(--border);
+}
+
+table>thead>tr:not(:last-child)>th,
+table>thead>tr:not(:last-child)>td,
+table>tbody>tr:not(:last-child)>th,
+table>tbody>tr:not(:last-child)>td,
+table>tfoot>tr:not(:last-child)>th,
+table>tfoot>tr:not(:last-child)>td,
+table>tr:not(:last-child)>td,
+table>tr:not(:last-child)>th,
+table>thead:not(:last-child),
+table>tbody:not(:last-child),
+table>tfoot:not(:last-child) {
+    border: none;
+    border-bottom: 1px solid var(--color-primary);
+}
