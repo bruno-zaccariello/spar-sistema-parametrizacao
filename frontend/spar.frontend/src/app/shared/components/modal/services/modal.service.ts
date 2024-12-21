@@ -1,9 +1,9 @@
+import { Dialog, DialogRef } from '@angular/cdk/dialog';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, filter, take } from 'rxjs';
+import { ModalEventType } from '../enums/modal-event-types.enum';
 import { ModalData } from '../models/modal-data.model';
 import { ModalEvent } from '../models/modal-event.model';
-import { ModalEventType } from '../enums/modal-event-types.enum';
-import { Dialog, DialogConfig, DialogRef } from '@angular/cdk/dialog';
 
 @Injectable({ providedIn: 'root' })
 export class ModalService {

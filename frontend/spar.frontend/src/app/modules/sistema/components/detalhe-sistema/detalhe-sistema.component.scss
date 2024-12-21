@@ -29,39 +29,3 @@
     inset: 0 -150px 0 100%;
     background-color: inherit;
 }
-
-.width-200 {
-    width: 200px;
-}
-
-.card {
-    border-width: 3px;
-    border-color: var(--color-primary);
-    background-color: rgba(var(--color-primary-rgb), 0.2);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.flex-row {
-    display: flex;
-    justify-content: start;
-    align-items: start;
-    gap: var(--md);
-}
-
-.space-between {
-    justify-content: space-between;
-}
-
-.form-group {
-    margin-bottom: var(--md);
-}
-
-label {
-    margin-bottom: var(--xs);
-    font-weight: bold;
-}
-
-textarea.fixed {
-    resize: vertical;
-    max-height: 250px;
-}

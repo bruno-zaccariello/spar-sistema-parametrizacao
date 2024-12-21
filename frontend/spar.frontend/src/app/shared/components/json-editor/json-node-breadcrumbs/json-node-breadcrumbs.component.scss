@@ -1,0 +1,14 @@
+.breadcrumbs-container {
+    display: flex;
+    padding: var(--sm);
+    background-color: var(--color-darken-bg);
+}
+
+.btn {
+    padding: 0;
+}
+
+ng-glyph {
+    font-size: 1.4rem;
+    font-weight: 500;
+}

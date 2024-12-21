@@ -5,10 +5,6 @@ import { environment } from '../../../../env/environment';
 import { Sistema } from '../../../core/models/sistema.model';
 import { BaseApiService } from '../../../core/services/base-api.service';
 
-export type QueryParametroGet = {
-  SistemaID: number;
-}
-
 @Injectable({
   providedIn: 'root'
 })
@@ -23,8 +19,7 @@ export class SistemaService extends BaseApiService {
   }
 
   public getSistema(id: number): Observable<Sistema> {
-    const param: QueryParametroGet = { SistemaID: id };
-    return this.get<Sistema>(`${id}`, param);
+    return this.get<Sistema>(`${id}`);
   }
 
   public postSistema(sistema: Partial<Sistema>): Observable<Sistema> {

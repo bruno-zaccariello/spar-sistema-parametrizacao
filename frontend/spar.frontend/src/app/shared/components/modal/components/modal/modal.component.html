@@ -4,7 +4,10 @@
       <ng-content select="modal-header"></ng-content>
     </div>
 
-    <div *ngIf="!modalHeader && (!!title || options?.title)" class="spar-modal-header">
+    <div
+      *ngIf="!modalHeader && (!!title || options?.title)"
+      class="spar-modal-header"
+    >
       <div class="modal-close">
         <button (click)="close()" autofocus class="icon-button">
           <ng-icon name="jamClose"></ng-icon>

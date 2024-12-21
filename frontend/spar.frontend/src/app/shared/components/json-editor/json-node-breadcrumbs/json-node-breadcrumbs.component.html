@@ -1,0 +1,15 @@
+<div class="breadcrumbs-container">
+  <div *ngFor="let crumb of breadcrumbs; let last = last">
+    <small class="breadcrumb breadcrumb-link mb-0">
+      <button (click)="emitSelect(crumb.node)" class="btn btn-link">
+        {{ crumb.displayName }}
+      </button>
+
+      <ng-content *ngIf="!last">
+        <div class="v-center">
+          <ng-glyph name="arrow_right"></ng-glyph>
+        </div>
+      </ng-content>
+    </small>
+  </div>
+</div>

@@ -7,6 +7,9 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { take } from 'rxjs';
 import { Parametro } from '../../../../core/models/parametro.model';
 import { ParametroService } from '../../services/parametro.service';
+import { NavigationService } from '../../../../core/services/navigation.service';
+import { Routes } from '../../../sistema/sistema-routing.module';
+import { ParametroRoutes } from '../../parametro-routing.module';
 
 @Component({
   selector: 'spar-listar-parametro',
@@ -31,6 +34,7 @@ export class ListarParametroComponent implements OnInit {
   displayedColumns: string[] = ['chave', 'valorJson', 'actions'];
 
   constructor(
+    private readonly navigationService: NavigationService,
     private readonly parametroService: ParametroService
   ) { }
 
@@ -43,7 +47,7 @@ export class ListarParametroComponent implements OnInit {
   }
 
   public carregarParametros() {
-    this.parametroService.getAll(this.sistemaId)
+    this.parametroService.getAll(this?.sistemaId)
       .pipe(take(1))
       .subscribe((parametros: Parametro[]) => {
         this.parametros = parametros ?? [];
@@ -51,7 +55,14 @@ export class ListarParametroComponent implements OnInit {
       });
   }
 
-  editarParametro(arg: any) { }
+  cadastrarParametro() {
+    this.navigationService.navigateTo(ParametroRoutes.CADASTRO);
+  }
+
+  editarParametro(parametro: Parametro) {
+    this.navigationService.navigateTo(ParametroRoutes.DETALHE('' + parametro.parametroID));
+  }
+
   deletarParametro(arg: any) { }
 
 }

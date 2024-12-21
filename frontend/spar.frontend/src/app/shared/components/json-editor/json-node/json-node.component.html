@@ -1,0 +1,132 @@
+<ng-container
+  *ngTemplateOutlet="nodeTemplate; context: { node }"
+></ng-container>
+
+<ng-template #nodeTemplate let-node="node">
+  <div
+    (click)="focusNode(node)"
+    class="node-flex-row"
+    [class.focused]="isFocused(node)"
+    [class.parent-focused]="isFocused(node.parentRef, true)"
+  >
+    <div class="node-grip-column text-center">
+      <button class="btn btn-link">
+        <ng-glyph name="drag_indicator"></ng-glyph>
+      </button>
+    </div>
+
+    <div class="node-actions-column">
+      <spar-json-node-actions
+        (addChild)="addChild($event)"
+        (removeChild)="removeChild($event)"
+        [node]="node"
+      ></spar-json-node-actions>
+    </div>
+
+    <div
+      class="node-expand-column text-center v-center"
+      [style.padding-left]="node?.getPadding()"
+    >
+      <button
+        [title]="node.expanded ? 'Recolher' : 'Expandir'"
+        [disabled]="
+          !BasicTypes.hasChildrenType(node.type ?? '') ||
+          node.children.length === 0
+        "
+        (click)="node.expanded = !node.expanded"
+        class="btn btn-link v-center expand-button"
+      >
+        <ng-container
+          *ngIf="node.hasChildren() || node.type === BasicTypes.ARRAY"
+        >
+          <ng-glyph *ngIf="node.expanded" name="arrow_drop_down"></ng-glyph>
+          <ng-glyph *ngIf="!node.expanded" name="arrow_right"></ng-glyph>
+        </ng-container>
+      </button>
+    </div>
+
+    <div class="node-input-column v-center">
+      <div class="d-flex gap-1">
+        <input
+          *ngIf="node.isArrayItem()"
+          type="text"
+          class="node-input index-input"
+          [disabled]="true"
+          [style.width]="getInputWidth(node.key)"
+          [(ngModel)]="node.arrayIndex"
+        />
+
+        <input
+          *ngIf="!node.isArrayItem()"
+          type="text"
+          class="node-input"
+          [style.width]="getInputWidth(node.key)"
+          [(ngModel)]="node.key"
+        />
+
+        <ng-container *ngIf="node?.type !== 'object' && node?.type !== 'array'">
+          :
+
+          <input
+            *ngIf="node.isArrayItem()"
+            [style.width]="getInputWidth(node.value)"
+            type="text"
+            class="node-input"
+            (blur)="validateNode(node)"
+            [class.colored]="typeIsColored(node.type)"
+            [ngClass]="node.type"
+            [(ngModel)]="node.value"
+          />
+
+          <input
+            *ngIf="!node.isArrayItem()"
+            [style.width]="getInputWidth(node.value)"
+            type="text"
+            class="node-input"
+            (blur)="validateNode(node)"
+            [class.colored]="typeIsColored(node.type)"
+            [ngClass]="node.type"
+            [(ngModel)]="node.value"
+          />
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="node-detail-column v-center">
+      <button class="styless" [class.text-danger]="node.error" [matMenuTriggerFor]="menu">
+        {{ getDetail(node) }}
+      </button>
+      <mat-menu #menu="matMenu" xPosition="after">
+        <ng-container
+          *ngTemplateOutlet="typeChangeMenu; context: { node }"
+        ></ng-container>
+      </mat-menu>
+    </div>
+
+    <div class="node-error-column v-center">
+      <small *ngIf="node?.error" class="text-danger">
+        {{ node?.error }}
+      </small>
+    </div>
+  </div>
+
+  <ng-container *ngIf="node.expanded && node.hasChildren()">
+    <ng-container *ngFor="let child of node?.children">
+      <ng-container
+        *ngTemplateOutlet="nodeTemplate; context: { node: child }"
+      ></ng-container>
+    </ng-container>
+  </ng-container>
+</ng-template>
+
+<ng-template #typeChangeMenu let-node="node">
+  <div class="node-add-options">
+    <button
+      *ngFor="let type of BasicTypes.getTypes()"
+      mat-menu-item
+      (click)="changeType(node, type)"
+    >
+      {{ type }}
+    </button>
+  </div>
+</ng-template>

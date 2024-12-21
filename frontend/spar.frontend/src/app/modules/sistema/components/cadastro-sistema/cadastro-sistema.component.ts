@@ -43,7 +43,7 @@ export class CadastroSistemaComponent {
   ) { }
 
   navigateListarSistemas() {
-    this.navigationService.navigateTo(SistemaRoutes.LISTAR_SISTEMAS);
+    this.navigationService.navigateTo(SistemaRoutes.LISTAR);
   }
 
   navigateEditarSistema() {

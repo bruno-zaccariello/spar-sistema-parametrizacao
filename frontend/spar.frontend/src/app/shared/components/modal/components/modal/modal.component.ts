@@ -1,13 +1,13 @@
-import { CommonModule } from '@angular/common';
 import { DialogRef } from '@angular/cdk/dialog';
+import { CommonModule } from '@angular/common';
 import { Component, ContentChild, EventEmitter, Input, OnDestroy, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
-import { Subject, take, takeUntil } from 'rxjs';
+import { NgIcon } from '@ng-icons/core';
+import { Subject, takeUntil } from 'rxjs';
+import { ModalEventType } from '../../enums/modal-event-types.enum';
 import { IModalComponent } from '../../interfaces/modal-component.interface';
 import { ModalData } from '../../models/modal-data.model';
 import { ModalOptions } from '../../models/modal-options.model';
 import { ModalService } from '../../services/modal.service';
-import { ModalEventType } from '../../enums/modal-event-types.enum';
-import { NgIcon } from '@ng-icons/core';
 import { ModalHeaderComponent } from '../modal-header/modal-header.component';
 
 @Component({

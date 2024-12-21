@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ModalComponent } from './components/modal/modal.component';
 import { DialogModule } from '@angular/cdk/dialog';
-import { ModalService } from './services/modal.service';
-import { ModalHeaderComponent } from './components/modal-header/modal-header.component';
-import { ModalFooterComponent } from './components/modal-footer/modal-footer.component';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { ModalBodyComponent } from './components/modal-body/modal-body.component';
+import { ModalFooterComponent } from './components/modal-footer/modal-footer.component';
+import { ModalHeaderComponent } from './components/modal-header/modal-header.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { ModalService } from './services/modal.service';
 
 const components = [
   ModalComponent,

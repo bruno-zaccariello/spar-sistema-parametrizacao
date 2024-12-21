@@ -2,9 +2,13 @@ import { NgModule } from "@angular/core";
 import { RouterModule } from '@angular/router';
 
 export class SistemaRoutes {
-    static readonly LISTAR_SISTEMAS = '/sistema';
+    static readonly LISTAR = '/sistema';
     static readonly CADASTRO = '/sistema/cadastro';
     static readonly DETALHE = (id: string) => '/sistema/' + id;
+}
+
+export class ParametroRoutes {
+
 }
 
 export const Routes = [

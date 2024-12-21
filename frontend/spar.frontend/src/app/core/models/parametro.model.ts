@@ -7,3 +7,5 @@ export class Parametro {
     createdAt!: Date;
     sistema!: Sistema;
 }
+
+export type ParametroPut = Parametro & { SistemaId: number };

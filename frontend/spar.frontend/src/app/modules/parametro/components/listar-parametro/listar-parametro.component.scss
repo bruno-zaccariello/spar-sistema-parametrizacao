@@ -1,1 +1,16 @@
 @import '../../../../../assets/css/round-border-table.scss';
+
+.no-wrap {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-height: 3ch;
+}
+
+.chave-column-content {
+    width: max-content;
+}
+
+.actions-column-content {
+    margin-left: auto;
+    width: max-content;
+}

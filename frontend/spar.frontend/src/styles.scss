@@ -5,6 +5,10 @@
 @import '@angular/cdk/overlay-prebuilt.css';
 @import '@angular/cdk/a11y-prebuilt.css'; 
 
+@import 'material-symbols';
+
+@import "jsoneditor/dist/jsoneditor.min.css";
+
 * {
   --color-primary-rgb: 141, 191, 244;
   --color-primary: rgb(var(--color-primary-rgb));
@@ -13,6 +17,7 @@
   --color-darken-primary: rgb(121, 171, 224);
   --color-darken-bg: rgb(220, 220, 220);
   --color-lighter-primary: rgb(171, 221, 274);
+  --color-super-light-primary: rgb(191, 241, 294);
 
   --font-contrast-primary: rgb(33, 80, 128);
 
@@ -61,4 +66,66 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: var(--lg);
+}
+
+.width-200 {
+  width: 200px;
+}
+
+.card {
+  border-width: 3px;
+  border-color: var(--color-primary);
+  background-color: rgba(var(--color-primary-rgb), 0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.flex-row {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  gap: var(--md);
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.form-group {
+  margin-bottom: var(--md);
+}
+
+label {
+  margin-bottom: var(--xs);
+  font-weight: bold;
+}
+
+textarea.fixed {
+  resize: vertical;
+  max-height: 250px;
+}
+
+.v-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden-element {
+  visibility: hidden;
+  white-space: pre;
+  pointer-events: none;
+}
+
+.styless {
+  all: unset;
+}
+
+.small-mat-menu {
+  --mat-menu-item-label-text-size: .7rem;
+  font-size: .7rem;
+}
+
+.small-mat-menu .mat-mdc-menu-item {
+  min-height: 2rem;
 }

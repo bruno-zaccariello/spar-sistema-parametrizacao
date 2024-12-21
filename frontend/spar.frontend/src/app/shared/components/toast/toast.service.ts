@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+import { IdUtils } from '../../../core/utils/id.util';
 
 @Injectable({
   providedIn: 'root'
@@ -7,14 +8,7 @@ import { Observable, Subject } from 'rxjs';
 export class ToastService {
 
   private static DURATION_MS = 5000;
-  private static genId = ToastService.idGenerator();
-
-  private static *idGenerator(): Generator<number> {
-    let id = 0;
-    while (true) {
-      yield id++;
-    }
-  }
+  private static genId = IdUtils.idGenerator();
 
   messagesSubject = new Subject<ToastMessage>();
 

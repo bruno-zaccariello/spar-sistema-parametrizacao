@@ -1,0 +1,33 @@
+<div>
+  <button
+    [matMenuTriggerFor]="menu"
+    [class.hidden-element]="!BasicTypes.hasChildrenType(node.type ?? '')"
+    class="btn btn-link"
+  >
+    <ng-glyph name="add_circle"></ng-glyph>
+  </button>
+
+  <mat-menu #menu="matMenu" xPosition="after">
+    <div class="small-mat-menu node-add-options">
+      <button mat-menu-item (click)="addChild(BasicTypes.OBJECT)">
+        Objeto
+      </button>
+      <button mat-menu-item (click)="addChild(BasicTypes.STRING)">Texto</button>
+      <button mat-menu-item (click)="addChild(BasicTypes.NUMBER)">
+        Número
+      </button>
+      <button mat-menu-item (click)="addChild(BasicTypes.ARRAY)">Lista</button>
+      <button mat-menu-item (click)="addChild(BasicTypes.BOOLEAN)">
+        Boolean
+      </button>
+    </div>
+  </mat-menu>
+
+  <button
+    [class.hidden-element]="node.level === 0"
+    (click)="removeChild()"
+    class="btn btn-link"
+  >
+    <ng-glyph name="delete"></ng-glyph>
+  </button>
+</div>

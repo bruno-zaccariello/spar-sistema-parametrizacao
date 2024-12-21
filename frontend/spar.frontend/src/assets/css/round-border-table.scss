@@ -17,14 +17,6 @@ tr:nth-child(even) {
     background-color: var(--color-darken-bg);
 }
 
-table th:first-child {
-    width: 20%;
-}
-
-table th:nth-child(2) {
-    width: 50%;
-}
-
 table th {
     background-color: var(--color-darken-primary);
 }
