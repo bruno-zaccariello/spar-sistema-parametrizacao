@@ -1,0 +1,61 @@
+<div class="page-header focus-content mb-4">
+  <h2>Cadastrar Parâmetro</h2>
+</div>
+
+<div class="focus-content">
+  <div class="card">
+    <div class="card-body">
+      <spar-form-parametro [required]="true"></spar-form-parametro>
+      <div class="flex-row">
+        <button
+          [disabled]="!formComponent.form.valid"
+          (click)="salvarParametro()"
+          type="submit"
+          class="btn btn-primary"
+        >
+          Salvar
+        </button>
+        <button (click)="cancelar()" type="button" class="btn btn-secondary">
+          Cancelar
+        </button>
+
+        <div class="pt-1" *ngIf="formComponent.form.invalid">
+          <small class="text-danger">Preencha todos os campos</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<modal #modal [modalId]="MODAL_ID" [options]="modalOptions">
+  <modal-body>
+    <div class="text-center">
+      <img
+        src="/assets/svg/check-mark.svg"
+        width="200px"
+        alt="Sucesso"
+        class="img-fluid"
+      />
+      <p class="fs-4">O parâmetro foi cadastrado com sucesso !</p>
+    </div>
+  </modal-body>
+
+  <modal-footer>
+    <div class="d-flex space-between">
+      <div>
+        <button (click)="navigateListarParametros()" class="btn btn-link">
+          Ver lista de parâmetros
+        </button>
+      </div>
+
+      <div class="d-flex gap-2">
+        <button (click)="modal.close()" class="btn btn-secondary">
+          Continuar cadastrando
+        </button>
+        <button (click)="navigateEditarParametro()" class="btn btn-primary">
+          Ir para edição
+        </button>
+      </div>
+    </div>
+  </modal-footer>
+</modal>

@@ -24,22 +24,20 @@ namespace SPAR.web.Controllers
             return _parametroService.GetParametros(SistemaID, pageNumber, pageSize);
         }
 
-        [HttpGet]
-        [Route("{ParametroID}")]
-        public ActionResult<ParametroDTO?> GetParametro(int ParametroID)
+        [HttpGet("{ParametroID}")]
+        public ActionResult<ParametroDTO?> GetParametro([FromRoute] int ParametroID)
         {
             return _parametroService.GetParametro(ParametroID);
         }
 
         [HttpPost]
-        public ActionResult<ParametroDTO?> Create(ParametroPostDTO ParametroDTO)
+        public ActionResult<ParametroDTO?> Create([FromBody] ParametroPostDTO ParametroDTO)
         {
             return _parametroService.CreateParametro(ParametroDTO);
         }
 
-        [HttpPut]
-        [Route("{ParametroID}")]
-        public ActionResult<ParametroDTO?> Update(long ParametroID, ParametroPostDTO ParametroDTO)
+        [HttpPut("{ParametroID}")]
+        public ActionResult<ParametroDTO?> Update([FromRoute] long ParametroID, [FromBody] ParametroPostDTO ParametroDTO)
         {
             return _parametroService.UpdateParametro(ParametroID, ParametroDTO);
         }

@@ -1,0 +1,128 @@
+<div *ngIf="root" class="json-editor">
+  <div class="json-editor__header">
+    <div class="header-actions">
+      <div class="d-flex gap-1 px-2 mt-1">
+        <button
+          (click)="changeVision()"
+          title="Trocar Visão"
+          class="btn btn-link"
+        >
+          <ng-glyph name="visibility"></ng-glyph>
+        </button>
+
+        <button
+          (click)="expandAll()"
+          title="Expandir tudo"
+          class="btn btn-link"
+        >
+          <ng-glyph name="expand"></ng-glyph>
+        </button>
+        <button
+          (click)="collapseAll()"
+          class="btn btn-link"
+          title="Recolher Tudo"
+        >
+          <ng-glyph name="collapse_content"></ng-glyph>
+        </button>
+
+        <button
+          (click)="toggleHighlight()"
+          class="btn btn-link"
+          title="Nivel de destaque"
+        >
+          <ng-glyph [name]="nodeOptions.highlightLevel"></ng-glyph>
+        </button>
+
+        <button
+          (click)="validateJson()"
+          class="btn btn-link"
+          title="Validar JSON"
+        >
+          <ng-glyph name="playlist_add_check"></ng-glyph>
+        </button>
+
+        <ng-container>
+          <button
+            [mat-menu-trigger-for]="menu"
+            (click)="validateJson()"
+            class="btn btn-link"
+            title="Habilitar Cores"
+          >
+            <ng-glyph name="colors"></ng-glyph>
+          </button>
+          <mat-menu #menu="matMenu">
+            <div class="small-mat-menu">
+              <div class="p-2 text-center">Habilitar cor para tipo</div>
+              <div *ngFor="let type of BasicTypes.getColoredTypes()">
+                <mat-checkbox
+                  (click)="$event.stopPropagation()"
+                  (change)="udpateOptions()"
+                  [(ngModel)]="coloredTypes[type]"
+                >
+                </mat-checkbox>
+                {{ type }}
+              </div>
+            </div>
+          </mat-menu>
+        </ng-container>
+
+        <button
+          [disabled]="!snapshots.has(currentSnapshot - 1)"
+          (click)="undo()"
+          class="btn btn-link"
+          title="Desfazer"
+        >
+          <ng-glyph name="undo"></ng-glyph>
+        </button>
+
+        <button
+          [disabled]="!snapshots.has(currentSnapshot + 1)"
+          (click)="redo()"
+          class="btn btn-link"
+          title="Refazer"
+        >
+          <ng-glyph name="redo"></ng-glyph>
+        </button>
+
+        <button
+          (click)="buildRootNode(true)"
+          class="btn btn-link text-danger"
+          style="margin-left: auto"
+          title="Limpar JSON"
+        >
+          <ng-glyph name="block"></ng-glyph>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="json-editor__editor">
+    <ng-container *ngIf="view === views.JSON">
+      <textarea
+        class="editor__textarea"
+        [(ngModel)]="json"
+        (blur)="updateJsonText()"
+      ></textarea>
+    </ng-container>
+
+    <ng-container *ngIf="view === views.TREE">
+      <div class="editor__breadcrumbs">
+        <spar-json-node-breadcrumbs
+          [node]="focusedNode"
+          (selectNode)="focusNode($event)"
+        ></spar-json-node-breadcrumbs>
+      </div>
+      <div class="nodes">
+        <spar-json-node
+          [node]="root"
+          [focusedNode]="focusedNode"
+          [options]="nodeOptions"
+          (removeChild)="onRemoveChild()"
+          (addChild)="onAddChild()"
+          (selectNode)="onSelectNode($event)"
+          (valueChange)="onNodeValueChange()"
+        ></spar-json-node>
+      </div>
+    </ng-container>
+  </div>
+</div>

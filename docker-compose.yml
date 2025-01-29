@@ -1,14 +1,14 @@
 services:
-  # frontend:
-  #   build:
-  #     context: ./frontend
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - "4200:4200"
-  #   depends_on:
-  #     - backend
-  #   networks:
-  #     - my-network
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200"
+    depends_on:
+      - backend
+    networks:
+      - be-fe
 
   backend:
     build:
@@ -24,6 +24,7 @@ services:
       - db
     networks:
       - db-be
+      - be-fe
 
   db:
     image: postgres:latest
@@ -51,4 +52,6 @@ services:
 
 networks:
   db-be:
+    driver: bridge
+  be-fe:
     driver: bridge
